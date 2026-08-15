@@ -41,7 +41,7 @@ const ASSETS = {
 };
 
 /* Ubah nomor ini ke nomor WhatsApp bisnis Anda (format internasional tanpa +) */
-const WHATSAPP_NUMBER = "6281200000000";
+const WHATSAPP_NUMBER = "62819696988";
 
 const waMessage = (text: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
