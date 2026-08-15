@@ -6,6 +6,7 @@
  * Copy: hangat, dewasa, aman untuk iklan — fokus kebersihan, kesegaran, percaya diri.
  */
 import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 import {
   Leaf,
   ShieldCheck,
@@ -42,7 +43,9 @@ function useReveal() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const targets = el.querySelectorAll<HTMLElement>(".reveal");
+    const targets = el.querySelectorAll<HTMLElement>(
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale, .img-slow-zoom"
+    );
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -63,7 +66,34 @@ function useReveal() {
   return ref;
 }
 
-/* ---------- CTA Buttons ---------- */
+/* ---------- Parallax on scroll ---------- */
+function useParallax() {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const els = document.querySelectorAll<HTMLElement>(".parallax");
+    let raf = 0;
+    const tick = () => {
+      els.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const offset = (window.innerHeight / 2 - center) * 0.06;
+        el.style.transform = `translateY(${offset}px)`;
+      });
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+}
+
+/* ---------- CTA Buttons (efek hover premium: glossy sweep + glow + icon bounce) ---------- */
 function WhatsAppCTA({ label, sub, big }: { label: string; sub?: string; big?: boolean }) {
   return (
     <a
@@ -72,11 +102,12 @@ function WhatsAppCTA({ label, sub, big }: { label: string; sub?: string; big?: b
       )}
       target="_blank"
       rel="noopener noreferrer"
-      className={`btn-press ${big ? "wa-pulse" : ""} inline-flex flex-col items-center gap-1 rounded-2xl bg-[#25D366] px-7 py-4 text-primary-foreground shadow-lg hover:bg-[#20bd5a]`}
+      className={`btn-press cta-wa inline-flex flex-col items-center gap-1 rounded-2xl bg-[#25D366] px-7 py-4 text-primary-foreground shadow-lg hover:bg-[#20bd5a] ${big ? "wa-pulse" : ""}`}
     >
       <span className={`inline-flex items-center gap-2 ${big ? "text-base font-semibold" : "text-sm font-semibold"}`}>
-        <MessageCircle className={big ? "size-5" : "size-4"} />
+        <MessageCircle className={`cta-icon ${big ? "size-5" : "size-4"}`} />
         {label}
+        <ArrowRight className="cta-arrow size-4" />
       </span>
       {sub && <span className="text-xs font-normal opacity-90">{sub}</span>}
     </a>
@@ -131,9 +162,9 @@ function Header() {
           href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-press inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+          className="btn-press cta-dark inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
         >
-          <MessageCircle className="size-4" /> Pesan Sekarang
+          <MessageCircle className="cta-icon size-4" /> Pesan Sekarang
         </a>
       </div>
     </header>
@@ -154,7 +185,7 @@ function Hero() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/60" />
       <div className="container relative grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
-        <div className="reveal">
+        <div className="reveal-left">
           <div className="mb-6 flex flex-wrap gap-2.5">
             <span className="pill-badge bg-primary text-primary-foreground">
               <BadgeCheck className="size-3.5" /> Terdaftar BPOM
@@ -190,12 +221,12 @@ function Hero() {
             <span className="inline-flex items-center gap-1.5"><Check className="size-4 text-sage" /> Ukuran pocket 3 mL</span>
           </div>
         </div>
-        <div className="reveal relative mx-auto w-full max-w-md">
-          <div className="absolute -inset-8 -z-10 rounded-full bg-[oklch(0.9_0.03_130/0.5)] blur-2xl" />
+        <div className="reveal-scale relative mx-auto w-full max-w-md">
+          <div className="absolute -inset-8 -z-10 rounded-full bg-[oklch(0.9_0.03_130/0.5)] blur-2xl parallax" />
           <img
             src={ASSETS.product}
             alt="Montecosme Men's Care Spray 3 mL"
-            className="w-full rounded-3xl shadow-[0_30px_80px_-30px_rgba(46,74,59,0.45)]"
+            className="w-full rounded-3xl shadow-[0_30px_80px_-30px_rgba(46,74,59,0.45)] transition-transform duration-500 hover:scale-[1.03] hover:-translate-y-1"
           />
         </div>
       </div>
@@ -244,7 +275,7 @@ function ProblemSolution() {
         </div>
 
         <div className="mt-16 grid items-center gap-10 rounded-3xl bg-primary p-8 text-primary-foreground md:grid-cols-2 md:p-12">
-          <div className="reveal">
+          <div className="reveal-left">
             <span className="pill-badge mb-5 bg-primary-foreground/10 text-primary-foreground">
               <SprayCanIcon className="size-3.5" /> Solusi Praktis
             </span>
@@ -264,11 +295,11 @@ function ProblemSolution() {
               ))}
             </ul>
           </div>
-          <div className="reveal mx-auto w-full max-w-sm">
+          <div className="reveal-right img-slow-zoom mx-auto w-full max-w-sm overflow-hidden rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]">
             <img
               src={ASSETS.product}
               alt="Montecosme spray 3 mL"
-              className="w-full rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]"
+              className="w-full"
             />
           </div>
         </div>
@@ -307,7 +338,7 @@ function Ingredients() {
         <div className="grid items-center gap-12">
           <div>
             <SectionNum n="02" title="Kandungan Alami untuk Kulit Sensitif" />
-            <p className="reveal -mt-2 max-w-xl text-base leading-relaxed text-muted-foreground">
+            <p className="reveal-left -mt-2 max-w-xl text-base leading-relaxed text-muted-foreground">
               Diformulasikan dengan bahan-bahan alami pilihan yang menjaga
               kebersihan sekaligus kesegaran kulit sensitif pria.
               Lembut di kulit, kuat menjaga kepercayaan diri Anda.
@@ -324,11 +355,11 @@ function Ingredients() {
               ))}
             </div>
           </div>
-          <div className="reveal relative">
+          <div className="reveal-right img-slow-zoom relative overflow-hidden rounded-3xl shadow-[0_24px_60px_-24px_rgba(46,74,59,0.3)]">
             <img
               src={ASSETS.ingredients}
               alt="Bahan alami Montecosme"
-              className="w-full rounded-3xl shadow-[0_24px_60px_-24px_rgba(46,74,59,0.3)]"
+              className="w-full"
             />
           </div>
         </div>
@@ -510,7 +541,7 @@ function FinalCTA() {
         className="absolute inset-0 bg-primary"
       />
       <div className="container relative text-center">
-        <h2 className="reveal mx-auto max-w-2xl font-display text-3xl font-semibold leading-tight text-primary-foreground md:text-5xl">
+        <h2 className="reveal-scale mx-auto max-w-2xl font-display text-3xl font-semibold leading-tight text-primary-foreground md:text-5xl">
           Percaya diri itu dimulai dari hal yang
           <span className="italic"> paling dekat dengan kita.</span>
         </h2>
@@ -525,10 +556,11 @@ function FinalCTA() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-press wa-pulse inline-flex flex-col items-center gap-1 rounded-2xl bg-[#25D366] px-9 py-5 text-primary-foreground shadow-2xl hover:bg-[#20bd5a]"
+            className="btn-press wa-pulse cta-wa inline-flex flex-col items-center gap-1 rounded-2xl bg-[#25D366] px-9 py-5 text-primary-foreground shadow-2xl hover:bg-[#20bd5a]"
           >
             <span className="inline-flex items-center gap-2 text-lg font-semibold">
-              <MessageCircle className="size-5" /> Pesan Sekarang via WhatsApp
+              <MessageCircle className="cta-icon size-5" /> Pesan Sekarang via WhatsApp
+              <ArrowRight className="cta-arrow size-4" />
             </span>
             <span className="text-xs font-normal opacity-90">Privasi Terjaga — Tersedia COD / Bayar di Tempat</span>
           </a>
@@ -577,6 +609,7 @@ function FloatingWA() {
 
 export default function Home() {
   const ref = useReveal();
+  useParallax();
   return (
     <div ref={ref} className="min-h-screen">
       <Header />

@@ -179,16 +179,169 @@
   }
 }
 
-/* Scroll reveal */
+/* ---------- Scroll reveal variants ---------- */
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.6s var(--ease-out-custom), transform 0.6s var(--ease-out-custom);
+    transition:
+      opacity 0.6s var(--ease-out-custom),
+      transform 0.6s var(--ease-out-custom);
+    transition-delay: 0ms;
   }
   .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Reveal dari kiri */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-36px);
+    transition:
+      opacity 0.7s var(--ease-out-custom),
+      transform 0.7s var(--ease-out-custom);
+  }
+  .reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Reveal dari kanan */
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(36px);
+    transition:
+      opacity 0.7s var(--ease-out-custom),
+      transform 0.7s var(--ease-out-custom);
+  }
+  .reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Reveal dengan scale (fade-up + grow) untuk gambar/hero */
+  .reveal-scale {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    transition:
+      opacity 0.8s var(--ease-out-custom),
+      transform 0.8s var(--ease-out-custom);
+  }
+  .reveal-scale.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Parallax lembut — kecepatan dikontrol via --parallax-speed (px per 100vh) */
+  .parallax {
+    will-change: transform;
+  }
+
+  /* Gambar yang slow-zoom saat ter-reveal */
+  .img-slow-zoom img {
+    transition: transform 1.6s var(--ease-out-custom);
+  }
+  .img-slow-zoom.revealed img {
+    transform: scale(1.05);
+  }
+
+  /* Float lembut untuk elemen dekoratif */
+  @keyframes float-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .float-soft {
+    animation: float-soft 5s ease-in-out infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .img-slow-zoom img {
+    transition: none;
+  }
+}
+
+/* ---------- Efek hover CTA premium ---------- */
+/* Tombol CTA WhatsApp utama: sweep glossy + glow hijau + icon bounce */
+.cta-wa {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.cta-wa::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    oklch(1 0 0 / 0.28) 45%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s var(--ease-out-custom);
+  z-index: -1;
+  pointer-events: none;
+}
+.cta-wa:hover::before {
+  transform: translateX(120%);
+}
+.cta-wa:hover {
+  box-shadow: 0 14px 36px -10px oklch(0.72 0.15 155 / 0.6);
+  transform: translateY(-3px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-wa .cta-icon {
+    transition: transform 0.25s var(--ease-out-custom);
+  }
+  .cta-wa:hover .cta-icon {
+    transform: translateY(-2px) scale(1.15);
+  }
+  .cta-wa .cta-arrow {
+    transition: transform 0.25s var(--ease-out-custom), opacity 0.25s var(--ease-out-custom);
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  .cta-wa:hover .cta-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Tombol CTA sekunder (dark green): sweep + lift */
+.cta-dark {
+  position: relative;
+  overflow: hidden;
+}
+.cta-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, oklch(1 0 0 / 0.14) 45%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.6s var(--ease-out-custom);
+}
+.cta-dark:hover::before {
+  transform: translateX(120%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-dark:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px -10px oklch(0.36 0.05 155 / 0.5);
+  }
+  .cta-dark .cta-icon {
+    transition: transform 0.25s var(--ease-out-custom);
+  }
+  .cta-dark:hover .cta-icon {
+    transform: translateY(-2px) scale(1.15);
   }
 }
 
