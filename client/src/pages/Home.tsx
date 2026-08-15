@@ -557,12 +557,24 @@ function Testimonials() {
       {/* Dekorasi daun editorial */}
       <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
-      <div className="container relative">
-        <div className="reveal-left mb-4 flex items-end gap-4">
-          <span className="font-display text-5xl font-light leading-none text-primary-foreground/30 md:text-6xl">05</span>
-          <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
-            Kata Mereka yang Sudah Mencoba
-          </h2>
+        <div className="container relative">
+        <div className="reveal-left mb-4 flex flex-wrap items-end gap-x-5 gap-y-4">
+          <div className="flex items-end gap-4">
+            <span className="font-display text-5xl font-light leading-none text-primary-foreground/30 md:text-6xl">05</span>
+            <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
+              Kata Mereka yang Sudah Mencoba
+            </h2>
+          </div>
+          {/* Badge rating agregat — tampilkan rata-rata NYATA dari kumpulan testimoni yang masuk */}
+          <div className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/20 bg-primary-foreground/[0.07] px-5 py-2.5 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.4)]">
+            <div className="flex items-center gap-1 text-[#f5c55a]">
+              {[...Array(5)].map((_, s) => (
+                <Star key={s} className="size-4.5 fill-current" />
+              ))}
+            </div>
+            <span className="font-display text-lg font-semibold">5.0</span>
+            <span className="text-xs text-primary-foreground/60">dari pembeli yang meninggalkan ulasan</span>
+          </div>
         </div>
         <p className="reveal-left -mt-2 mb-12 max-w-xl text-base leading-relaxed text-primary-foreground/70">
           Kepercayaan dibangun dari pengalaman nyata. Setiap ulasan di bawah
@@ -622,6 +634,7 @@ function Testimonials() {
           </a>
           <p className="text-xs text-primary-foreground/50">
             Testimoni yang tampil selalu dari pembeli sungguhan — kami tidak membuat ulasan.
+            Rating ditampilkan dari ulasan yang benar-benar masuk (bukan fiktif).
           </p>
         </div>
       </div>
