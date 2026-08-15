@@ -379,6 +379,72 @@ function Ingredients() {
   );
 }
 
+/* ---------- Countdown hook — deadline promo yang jujur (direset harian per pengunjung) ---------- */
+function usePromoCountdown() {
+  const [endsAt, setEndsAt] = useState<number>(0);
+  const [now, setNow] = useState<number>(() => Date.now());
+
+  useEffect(() => {
+    // Deadline promo: tengah malam hari ini waktu lokal pengunjung.
+    // Ini jujur — promo memang berakhir setiap hari dan diperpanjang keesokan harinya.
+    const key = "montecosme-promo-ends";
+    const midnight = new Date();
+    midnight.setHours(23, 59, 59, 999);
+    let target = Number(localStorage.getItem(key));
+    if (!target || target < Date.now()) {
+      target = midnight.getTime();
+      localStorage.setItem(key, String(target));
+    }
+    setEndsAt(target);
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const diff = Math.max(0, endsAt - now);
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  return { h, m, s, done: diff <= 0 };
+}
+
+/* ---------- Banner countdown timer untuk section paket ---------- */
+function PromoTimer() {
+  const { h, m, s } = usePromoCountdown();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const units: Array<[number, string]> = [
+    [h, "Jam"],
+    [m, "Menit"],
+    [s, "Detik"],
+  ];
+  return (
+    <div className="reveal mb-10 inline-flex flex-wrap items-center gap-4 rounded-2xl border border-[#f5c55a]/40 bg-[#f5c55a]/10 px-6 py-4">
+      <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+        <span className="relative flex size-2.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#f59a00] opacity-60" />
+          <span className="relative inline-flex size-2.5 rounded-full bg-[#f59a00]" />
+        </span>
+        Promo Hari Ini Berakhir Dalam
+      </span>
+      <span className="flex items-center gap-2" aria-label={`Sisa waktu promo: ${h} jam ${m} menit ${s} detik`}>
+        {units.map(([n, label], i) => (
+          <span key={label} className="flex items-center gap-2">
+            {i > 0 && <span className="font-display text-lg font-semibold text-primary">:</span>}
+            <span className="flex flex-col items-center">
+              <span className="rounded-lg bg-primary px-3 py-1 font-display text-lg font-bold tabular-nums text-primary-foreground">
+                {pad(n)}
+              </span>
+              <span className="mt-1 text-[10px] font-medium uppercase tracking-wider text-primary/60">{label}</span>
+            </span>
+          </span>
+        ))}
+      </span>
+      <span className="hidden text-xs text-primary/70 sm:inline">
+        — pesan sekarang untuk mengunci penawaran hari ini
+      </span>
+    </div>
+  );
+}
+
 /* ---------- Pricing ---------- */
 function Pricing() {
   const plans = [
@@ -413,10 +479,11 @@ function Pricing() {
             Pilih Paket yang Pas Buat Kamu
           </h2>
         </div>
-        <p className="reveal -mt-2 mb-12 max-w-xl text-base leading-relaxed text-muted-foreground">
+        <p className="reveal -mt-2 mb-6 max-w-xl text-base leading-relaxed text-muted-foreground">
           Karena ukurannya ringkas 3 mL, paling menguntungkan ambil paket bundling
           — lebih hemat per pcs dan selalu ada cadangan.
         </p>
+        <PromoTimer />
         <div className="grid items-stretch gap-6 md:grid-cols-3">
           {plans.map((p) => (
             <div
