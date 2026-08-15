@@ -20,6 +20,9 @@ import {
   Truck,
   Lock,
   Star,
+  Quote,
+  Send,
+  PenLine,
 } from "lucide-react";
 
 /* ---------- Assets ---------- */
@@ -157,6 +160,7 @@ function Header() {
           <a href="#kandungan" className="transition-colors hover:text-primary">Kandungan</a>
           <a href="#paket" className="transition-colors hover:text-primary">Paket</a>
           <a href="#privasi" className="transition-colors hover:text-primary">Garansi Privasi</a>
+          <a href="#testimoni" className="transition-colors hover:text-primary">Testimoni</a>
         </nav>
         <a
           href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
@@ -513,7 +517,7 @@ function Tips() {
   return (
     <section className="py-20 md:py-24">
       <div className="container">
-        <SectionNum n="05" title="Tips Keluarga Harmonis dari Kami" />
+        <SectionNum n="06" title="Tips Keluarga Harmonis dari Kami" />
         <div className="grid gap-6 md:grid-cols-3">
           {tips.map((tip, i) => (
             <div
@@ -527,6 +531,98 @@ function Tips() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tip.d}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Testimoni (kartu ulasan elegan — isi dengan testimoni PEMBELI NYATA) ---------- */
+function Testimonials() {
+  /*
+   * PENTING (kepatuhan perlindungan konsumen & kebijakan iklan):
+   * Jangan mengisi array ini dengan ulasan fiktif / buatan sendiri.
+   * Hanya gunakan testimoni asli dari pembeli sungguhan (chat WhatsApp,
+   * screenshot chat, Google Reviews, dsb.) dan minta izin mereka bila
+   * mencantumkan nama. Kartu kosong disediakan agar desain siap diisi.
+   */
+  const reviews: Array<{ name: string; text: string; date: string } | null> = [
+    null,
+    null,
+    null,
+  ];
+
+  return (
+    <section id="testimoni" className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
+      {/* Dekorasi daun editorial */}
+      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
+      <div className="container relative">
+        <div className="reveal-left mb-4 flex items-end gap-4">
+          <span className="font-display text-5xl font-light leading-none text-primary-foreground/30 md:text-6xl">05</span>
+          <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
+            Kata Mereka yang Sudah Mencoba
+          </h2>
+        </div>
+        <p className="reveal-left -mt-2 mb-12 max-w-xl text-base leading-relaxed text-primary-foreground/70">
+          Kepercayaan dibangun dari pengalaman nyata. Setiap ulasan di bawah
+          hanya kami tampilkan dari pembeli yang benar-benar merasakan Montecosme.
+        </p>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {reviews.map((r, i) => (
+            <div
+              key={i}
+              className={`reveal hover-lift relative flex flex-col rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.05] p-8 backdrop-blur-sm ${
+                i === 1 ? "md:mt-8" : i === 2 ? "md:mt-16" : ""
+              }`}
+            >
+              <Quote className="mb-5 size-7 text-[#7fd4a2]" />
+              {r ? (
+                <>
+                  <p className="flex-1 font-display text-lg italic leading-relaxed text-primary-foreground/90">
+                    “{r.text}”
+                  </p>
+                  <div className="mt-6 border-t border-primary-foreground/15 pt-4">
+                    <div className="flex items-center gap-1 text-[#f5c55a]">
+                      {[...Array(5)].map((_, s) => (
+                        <Star key={s} className="size-4 fill-current" />
+                      ))}
+                    </div>
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="font-semibold">{r.name}</span>
+                      <span className="text-xs text-primary-foreground/50">{r.date}</span>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                /* Kartu kosong — tampilan elegan saat belum ada testimoni asli */
+                <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-primary-foreground/30">
+                    <PenLine className="size-5 text-primary-foreground/50" />
+                  </div>
+                  <p className="text-sm text-primary-foreground/60">
+                    Testimoni pembeli asli akan tampil di sini
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Ajakan untuk testimoni — mengarah ke WhatsApp */}
+        <div className="reveal mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href={waMessage("Halo, saya ingin berbagi testimoni Montecosme.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-press cta-dark inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-6 py-3 text-sm font-semibold text-primary-foreground hover:border-primary-foreground/50"
+          >
+            <Send className="cta-icon size-4" /> Kirim Testimoni via WhatsApp
+          </a>
+          <p className="text-xs text-primary-foreground/50">
+            Testimoni yang tampil selalu dari pembeli sungguhan — kami tidak membuat ulasan.
+          </p>
         </div>
       </div>
     </section>
@@ -619,6 +715,7 @@ export default function Home() {
         <Ingredients />
         <Pricing />
         <Privacy />
+        <Testimonials />
         <Tips />
         <FinalCTA />
       </main>
