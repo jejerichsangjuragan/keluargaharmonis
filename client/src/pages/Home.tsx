@@ -24,6 +24,12 @@ import {
   Send,
   PenLine,
 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 /* ---------- Assets ---------- */
 const ASSETS = {
@@ -161,6 +167,7 @@ function Header() {
           <a href="#paket" className="transition-colors hover:text-primary">Paket</a>
           <a href="#privasi" className="transition-colors hover:text-primary">Garansi Privasi</a>
           <a href="#testimoni" className="transition-colors hover:text-primary">Testimoni</a>
+          <a href="#faq" className="transition-colors hover:text-primary">FAQ</a>
         </nav>
         <a
           href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
@@ -517,7 +524,7 @@ function Tips() {
   return (
     <section className="py-20 md:py-24">
       <div className="container">
-        <SectionNum n="06" title="Tips Keluarga Harmonis dari Kami" />
+        <SectionNum n="07" title="Tips Keluarga Harmonis dari Kami" />
         <div className="grid gap-6 md:grid-cols-3">
           {tips.map((tip, i) => (
             <div
@@ -642,6 +649,86 @@ function Testimonials() {
   );
 }
 
+/* ---------- FAQ (accordion editorial — 2 kolom di desktop) ---------- */
+function FAQ() {
+  const faqs = [
+    {
+      q: "Bagaimana cara pakai Montecosme?",
+      a: "Cukup semprotkan 1–2 kali ke area yang diinginkan, lalu biarkan kering sejenak — tidak perlu dibilas. Untuk hasil optimal, gunakan setelah mandi atau sebelum beraktivitas. Ukurannya ringkas, jadi praktis dipakai kapan saja.",
+    },
+    {
+      q: "Apakah produk ini aman untuk kulit sensitif?",
+      a: "Montecosme diformulasikan dengan bahan alami seperti Centella Asiatica dan Aloe Vera yang dikenal lembut dan menenangkan kulit sensitif. Produk sudah terdaftar BPOM. Jika Anda memiliki kondisi kulit tertentu, lakukan tes kecil di area terbatas terlebih dahulu.",
+    },
+    {
+      q: "Apakah benar privasi pengiriman dijaga 100%?",
+      a: "Ya. Nama produk dihapus dari label resi pengiriman, paket dikirim dalam kemasan polos tanpa logo mencolok, dan data Anda hanya digunakan untuk keperluan pengiriman. Siapa pun yang menerima paket tidak akan tahu isinya.",
+    },
+    {
+      q: "Berapa lama produk bisa dipakai dengan ukuran 3 mL?",
+      a: "Dengan pemakaian 1–2 semprotan sekali pakai, satu botol 3 mL bisa dipakai berkali-kali. Untuk pemakaian rutin, kami sarankan Paket Hemat (Beli 2 Gratis 1) atau Paket Stok agar selalu ada cadangan.",
+    },
+    {
+      q: "Bagaimana cara memesan dan pembayarannya?",
+      a: "Klik tombol WhatsApp di halaman ini, pilih paket favorit Anda, dan admin kami akan memandu proses pemesanan. Tersedia pembayaran Cash on Delivery (COD) / bayar di tempat — bayar hanya setelah paket sampai di tangan Anda.",
+    },
+    {
+      q: "Ke mana saja produk dikirim dan berapa lama?",
+      a: "Kami mengirim ke seluruh Indonesia melalui kurir terpercaya. Durasi pengiriman tergantung lokasi, umumnya 1–4 hari kerja untuk Jawa dan 3–7 hari kerja untuk luar Jawa.",
+    },
+  ];
+
+  return (
+    <section id="faq" className="relative py-20 md:py-28">
+      <div className="container">
+        <div className="grid gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-start">
+          <div>
+            <div className="reveal-left mb-4 flex items-end gap-4">
+              <span className="font-display text-5xl font-light leading-none text-primary/25 md:text-6xl">06</span>
+              <h2 className="font-display text-3xl font-semibold leading-tight md:text-4xl">
+                Pertanyaan yang Sering Diajukan
+              </h2>
+            </div>
+            <p className="reveal-left -mt-2 max-w-sm text-base leading-relaxed text-muted-foreground">
+              Belum menemukan jawaban yang kamu cari? Tim kami siap membantu
+              langsung via WhatsApp — respons cepat dan ramah.
+            </p>
+            <div className="reveal-left mt-7">
+              <a
+                href={waMessage("Halo, saya mau tanya soal Montecosme.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-press cta-wa inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-lg hover:bg-[#20bd5a]"
+              >
+                <MessageCircle className="cta-icon size-4" /> Tanya via WhatsApp
+                <ArrowRight className="cta-arrow size-4" />
+              </a>
+            </div>
+          </div>
+          <div className="reveal-right rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((f, i) => (
+                <AccordionItem
+                  key={f.q}
+                  value={`faq-${i}`}
+                  className="border-border py-1"
+                >
+                  <AccordionTrigger className="text-left font-display text-base font-semibold hover:no-underline md:text-lg">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Final CTA ---------- */
 function FinalCTA() {
   return (
@@ -729,6 +816,7 @@ export default function Home() {
         <Pricing />
         <Privacy />
         <Testimonials />
+        <FAQ />
         <Tips />
         <FinalCTA />
       </main>
