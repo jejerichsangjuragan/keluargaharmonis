@@ -620,9 +620,6 @@ function Pricing() {
             </div>
           ))}
         </div>
-        <p className="reveal mt-6 text-center text-xs leading-relaxed text-muted-foreground">
-          Harga coret dan harga jual ditampilkan sesuai penawaran terbaru untuk masing-masing paket.
-        </p>
       </div>
     </section>
   );

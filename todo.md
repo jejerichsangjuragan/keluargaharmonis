@@ -91,3 +91,9 @@
 - [ ] Tambahkan hover shadow dan elevasi pada kartu paket harga
 - [ ] Validasi desktop/mobile dan simpan checkpoint
 
+
+## Hapus catatan harga
+- [ ] Hapus teks catatan harga di bawah tabel paket
+- [ ] Pastikan tabel dan spacing section tetap rapi
+- [ ] Validasi build dan simpan checkpoint
+
