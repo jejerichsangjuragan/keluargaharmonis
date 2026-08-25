@@ -97,3 +97,9 @@
 - [ ] Pastikan tabel dan spacing section tetap rapi
 - [ ] Validasi build dan simpan checkpoint
 
+
+## Perapian jarak section
+- [ ] Audit padding vertikal pada seluruh section landing page
+- [ ] Kurangi gap yang terlalu renggang secara responsif
+- [ ] Validasi ritme spacing desktop/mobile dan simpan checkpoint
+

@@ -265,7 +265,7 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24"
+      className="relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16"
       style={{
         backgroundImage: `url(${ASSETS.heroBg})`,
         backgroundSize: "cover",
@@ -343,9 +343,9 @@ function ProblemSolution() {
     },
   ];
   return (
-    <section id="masalah" className="relative py-20 md:py-28">
+    <section id="masalah" className="relative py-16 md:py-20">
       <div className="container">
-        <h2 className="mb-8 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Masalah yang Sering Tak Terucap</h2>
+        <h2 className="mb-6 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Masalah yang Sering Tak Terucap</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {problems.map((p, i) => (
             <div
@@ -363,7 +363,7 @@ function ProblemSolution() {
           ))}
         </div>
 
-        <div className="mt-16 grid items-center gap-10 rounded-3xl bg-primary p-8 text-primary-foreground md:grid-cols-2 md:p-12">
+        <div className="mt-10 grid items-center gap-8 rounded-3xl bg-primary p-8 text-primary-foreground md:mt-12 md:grid-cols-2 md:gap-10 md:p-12">
           <div className="reveal-left">
             <span className="pill-badge mb-5 bg-primary-foreground/10 text-primary-foreground">
               <SprayCanIcon className="size-3.5" /> Solusi Praktis
@@ -422,17 +422,17 @@ function Ingredients() {
     },
   ];
   return (
-    <section id="kandungan" className="relative bg-accent/40 py-20 md:py-28">
+    <section id="kandungan" className="relative bg-accent/40 py-16 md:py-20">
       <div className="container">
-        <div className="grid items-center gap-12">
+        <div className="grid items-center gap-8 md:gap-10">
           <div>
-            <h2 className="mb-8 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Kandungan Alami untuk Kulit Sensitif</h2>
+            <h2 className="mb-6 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Kandungan Alami untuk Kulit Sensitif</h2>
             <p className="reveal-left -mt-2 max-w-xl text-base leading-relaxed text-muted-foreground">
               Diformulasikan dengan bahan-bahan alami pilihan yang menjaga
               kebersihan sekaligus kesegaran kulit sensitif pria.
               Lembut di kulit, kuat menjaga kepercayaan diri Anda.
             </p>
-            <div className="reveal mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="reveal mt-6 grid gap-4 sm:grid-cols-2">
               {items.map((it) => (
                 <div key={it.name} className="hover-lift rounded-2xl bg-card p-6 shadow-sm">
                   <span className="pill-badge mb-3 bg-accent text-accent-foreground">
@@ -555,7 +555,7 @@ function Pricing() {
     },
   ];
   return (
-    <section id="paket" className="py-20 md:py-28">
+    <section id="paket" className="py-16 md:py-20">
       <div className="container">
         <div className="reveal mb-4 flex flex-wrap items-end justify-between gap-5">
           <div>
@@ -570,7 +570,7 @@ function Pricing() {
             Harga ditampilkan transparan. Pilih paket yang paling sesuai dengan kebutuhanmu.
           </span>
         </div>
-        <p className="reveal -mt-2 mb-6 max-w-xl text-base leading-relaxed text-muted-foreground">
+        <p className="reveal -mt-2 mb-5 max-w-xl text-base leading-relaxed text-muted-foreground">
           Karena ukurannya ringkas 3 mL, paket bundling membantu kamu punya cadangan
           tanpa perlu sering memesan ulang.
         </p>
@@ -628,12 +628,12 @@ function Pricing() {
 /* ---------- Privacy ---------- */
 function Privacy() {
   return (
-    <section id="privasi" className="relative bg-accent/40 py-20 md:py-28">
+    <section id="privasi" className="relative bg-accent/40 py-16 md:py-20">
       <div className="container">
         <h2 className="reveal mb-4 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
           Garansi Privasi 100%
         </h2>
-        <div className="grid items-center gap-10 md:grid-cols-2">
+        <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
           <div className="reveal order-2 md:order-1">
             <img
               src={ASSETS.privacy}
@@ -686,7 +686,7 @@ function Tips() {
     },
   ];
   return (
-    <section className="py-20 md:py-24">
+    <section className="py-16 md:py-20">
       <div className="container">
         <h2 className="mb-8 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Tips Keluarga Harmonis dari Kami</h2>
         <div className="grid gap-6 md:grid-cols-3">
@@ -717,7 +717,7 @@ function Testimonials() {
    * mencantumkan nama. Panel kepercayaan ini menjelaskan standar publikasi ulasan.
    */
   return (
-    <section id="testimoni" className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
+    <section id="testimoni" className="relative overflow-hidden bg-primary py-16 text-primary-foreground md:py-20">
       {/* Dekorasi daun editorial */}
       <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
@@ -737,12 +737,12 @@ function Testimonials() {
             <span className="text-xs text-primary-foreground/60">target rating kepuasan</span>
           </div>
         </div>
-        <p className="reveal-left -mt-2 mb-12 max-w-xl text-base leading-relaxed text-primary-foreground/70">
+        <p className="reveal-left -mt-2 mb-8 max-w-xl text-base leading-relaxed text-primary-foreground/70 md:mb-10">
           Kepercayaan dibangun dari pengalaman nyata. Setiap ulasan di bawah
           hanya kami tampilkan dari pembeli yang benar-benar merasakan Montecosme.
         </p>
 
-        <div className="grid gap-6 md:grid-cols-[1.15fr_0.85fr] md:items-start">
+        <div className="grid gap-5 md:grid-cols-[1.15fr_0.85fr] md:items-start">
           <div className="reveal relative rounded-[2rem] border border-primary-foreground/15 bg-primary-foreground/[0.06] p-8 backdrop-blur-sm md:p-10">
             <Quote className="mb-6 size-9 text-[#7fd4a2]" />
             <p className="max-w-2xl font-display text-2xl italic leading-relaxed text-primary-foreground/95 md:text-3xl">
@@ -824,9 +824,9 @@ function FAQ() {
   ];
 
   return (
-    <section id="faq" className="relative py-20 md:py-28">
+    <section id="faq" className="relative py-16 md:py-20">
       <div className="container">
-        <div className="grid gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-start">
+        <div className="grid gap-8 md:grid-cols-[0.85fr_1.15fr] md:items-start">
           <div>
             <h2 className="reveal-left mb-4 font-display text-3xl font-semibold leading-tight md:text-4xl">
               Pertanyaan yang Sering Diajukan
@@ -874,7 +874,7 @@ function FAQ() {
 /* ---------- Final CTA ---------- */
 function FinalCTA() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-16 md:py-20">
       <div
         className="absolute inset-0 bg-primary"
       />
