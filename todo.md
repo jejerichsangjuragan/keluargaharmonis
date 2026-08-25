@@ -124,3 +124,10 @@
 - [x] Validasi build serta tampilan desktop/mobile
 - [ ] Simpan checkpoint setelah hasil tervalidasi
 
+
+## Penyederhanaan label CTA
+- [x] Audit label CTA atas dan bawah
+- [x] Ganti label menjadi "Pesan Sekarang" tanpa mengubah subteks
+- [x] Validasi build serta tampilan desktop/mobile
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+

@@ -1,1 +1,1 @@
-cta-copy-validation
+cta-label-validation
