@@ -32,13 +32,25 @@ import {
 } from "@/components/ui/accordion";
 
 /* ---------- Assets ---------- */
-const ASSETS = {
-  product: "/manus-storage/montecosme-product_7957a22d.png",
-  heroBg: "/manus-storage/montecosme-hero-bg_7640bb1c.png",
-  ingredients: "/manus-storage/montecosme-ingredients_3563a2f7.png",
-  privacy: "/manus-storage/montecosme-privacy_016fd02e.png",
-  logo: "/manus-storage/montecosme-logo_6d4ab31e.png",
-};
+// GitHub Pages berada di subpath /keluargaharmonis/ dan tidak memiliki route
+// /manus-storage. Vite akan mengisi BASE_URL sesuai target build.
+const IS_GITHUB_PAGES = import.meta.env.BASE_URL === "/keluargaharmonis/";
+const GH_ASSET = (name: string) => `${import.meta.env.BASE_URL}gh-pages-assets/${name}`;
+const ASSETS = IS_GITHUB_PAGES
+  ? {
+      product: GH_ASSET("montecosme-product.webp"),
+      heroBg: GH_ASSET("montecosme-hero-bg.webp"),
+      ingredients: GH_ASSET("montecosme-ingredients.webp"),
+      privacy: GH_ASSET("montecosme-privacy.webp"),
+      logo: GH_ASSET("montecosme-logo.webp"),
+    }
+  : {
+      product: "/manus-storage/montecosme-product_7957a22d.png",
+      heroBg: "/manus-storage/montecosme-hero-bg_7640bb1c.png",
+      ingredients: "/manus-storage/montecosme-ingredients_3563a2f7.png",
+      privacy: "/manus-storage/montecosme-privacy_016fd02e.png",
+      logo: "/manus-storage/montecosme-logo_6d4ab31e.png",
+    };
 
 /* Ubah nomor ini ke nomor WhatsApp bisnis Anda (format internasional tanpa +) */
 const WHATSAPP_NUMBER = "62819696988";

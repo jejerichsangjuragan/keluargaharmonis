@@ -79,7 +79,7 @@ function vitePluginManusDebugCollector(): Plugin {
     name: "manus-debug-collector",
 
     transformIndexHtml(html) {
-      if (process.env.NODE_ENV === "production") {
+      if (process.env.NODE_ENV === "production" || process.env.GITHUB_PAGES === "true") {
         return html;
       }
       return {
@@ -206,6 +206,9 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
+  // GitHub Pages menayangkan repository project di /keluargaharmonis/.
+  // Build Manus tetap memakai root URL / seperti sebelumnya.
+  base: process.env.GITHUB_PAGES ? "/keluargaharmonis/" : "/",
   plugins,
   resolve: {
     alias: {
