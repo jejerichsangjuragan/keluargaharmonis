@@ -31,3 +31,10 @@
 - [ ] Jalankan check/build dan verifikasi desktop serta mobile
 - [ ] Simpan checkpoint setelah hasil tervalidasi
 
+
+## Pembaruan harga terbaru
+- [ ] Perbarui harga coret dan harga jual Paket Coba
+- [ ] Perbarui harga coret dan harga jual Paket Hemat
+- [ ] Perbarui harga coret dan harga jual Paket Reseller
+- [ ] Validasi tampilan harga desktop/mobile dan simpan checkpoint
+

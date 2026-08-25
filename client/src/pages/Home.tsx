@@ -461,6 +461,7 @@ function Pricing() {
       popular: true,
       perUnit: "Best Seller",
       price: "Rp500.000",
+      compareAt: "Rp750.000",
     },
     {
       name: "Paket Reseller",
@@ -469,6 +470,7 @@ function Pricing() {
       popular: false,
       perUnit: "Untuk stok",
       price: "Rp750.000",
+      compareAt: "Rp1.250.000",
     },
   ];
   return (
@@ -533,7 +535,7 @@ function Pricing() {
           ))}
         </div>
         <p className="reveal mt-6 text-center text-xs leading-relaxed text-muted-foreground">
-          Harga Paket Coba menampilkan harga coret sesuai penawaran yang diberikan. Paket lain ditampilkan dengan harga jual saat ini.
+          Harga coret dan harga jual ditampilkan sesuai penawaran terbaru untuk masing-masing paket.
         </p>
       </div>
     </section>
