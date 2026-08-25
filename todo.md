@@ -44,3 +44,11 @@
 - [ ] Tampilkan label CTA yang jelas untuk Paket Coba, Hemat, dan Reseller
 - [ ] Validasi CTA pada desktop/mobile dan simpan checkpoint
 
+
+## Sinkronisasi domain custom terbaru
+- [ ] Bandingkan HTML domain keluargaharmonis.id dengan preview/checkpoint terbaru
+- [ ] Audit artifact root dan asset yang dipakai GitHub Pages
+- [ ] Bangun serta dorong artifact terbaru ke repository domain
+- [ ] Uji harga dan CTA baru dengan cache-buster
+- [ ] Laporkan status tayang serta kemungkinan cache CDN
+

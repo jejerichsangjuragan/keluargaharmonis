@@ -37,3 +37,6 @@ Pemeriksaan variasi domain menunjukkan `https://keluargaharmonis.id/` (dengan hu
 `https://keluargaharmonis.id/?v=d7a9a27b` berhasil menampilkan landing page lengkap dengan headline, navigasi, CTA WhatsApp, paket, testimoni, FAQ, dan gambar produk. HTTP untuk `gh-pages-assets/montecosme-product.webp`, `gh-pages-assets/montecosme-hero-bg.webp`, serta bundle JavaScript terbaru semuanya 200; console browser tidak mencatat error. GitHub Pages API mencatat CNAME `keluargaharmonis.id`, source `main:/`, dan HTTPS enforcement belum aktif.
 
 Domain `keluargaharomis.id` tetap tidak resolve. Itu berbeda ejaan dari domain kanonis `keluargaharmonis.id` dan tidak dapat dijadikan target redirect sebelum DNS serta konfigurasi domainnya tersedia.
+
+## Sinkronisasi 25 Agustus 2026
+Pemeriksaan `https://keluargaharmonis.id/?check=latest` menunjukkan domain kustom masih menyajikan artifact lama: heading masih memiliki angka section, harga masih diarahkan via WhatsApp, dan CTA paket masih memakai pesan umum. Preview proyek sudah memiliki tabel harga serta CTA spesifik. Kesimpulan: checkpoint source sudah lebih baru, tetapi artifact root yang dibaca GitHub Pages custom domain belum dibangun dan didorong ulang setelah pembaruan harga/CTA.
