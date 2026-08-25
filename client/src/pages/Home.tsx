@@ -32,10 +32,10 @@ import {
 } from "@/components/ui/accordion";
 
 /* ---------- Assets ---------- */
-// GitHub Pages berada di subpath /keluargaharmonis/ dan tidak memiliki route
-// /manus-storage. Vite akan mengisi BASE_URL sesuai target build.
-const IS_GITHUB_PAGES = import.meta.env.BASE_URL === "/keluargaharmonis/";
-const GH_ASSET = (name: string) => `${import.meta.env.BASE_URL}gh-pages-assets/${name}`;
+// The Pages artifact is served from both a repository subpath and a custom domain.
+// Relative asset URLs keep the images portable across both hosts.
+const IS_GITHUB_PAGES = import.meta.env.BASE_URL === "./";
+const GH_ASSET = (name: string) => `gh-pages-assets/${name}`;
 const ASSETS = IS_GITHUB_PAGES
   ? {
       product: GH_ASSET("montecosme-product.webp"),

@@ -9,3 +9,11 @@
 - Jangan ubah backend/server; proyek ini frontend statis.
 - Pertahankan asset visual eksternal yang sudah digunakan proyek.
 
+## Pengalihan arduino-indonesia-hub ke domain keluarga
+- [ ] Periksa URL GitHub Pages sumber dan perilaku redirect saat ini
+- [ ] Periksa domain tujuan yang ditulis pengguna dan variasi ejaan domain
+- [ ] Periksa DNS, HTTPS, dan respons HTTP domain tujuan
+- [ ] Tentukan konfigurasi redirect dan custom domain yang dapat diterapkan
+- [ ] Uji URL sumber, URL tujuan, dan tampilan final
+- [ ] Laporkan status tayang dan langkah registrar/DNS bila akses diperlukan
+

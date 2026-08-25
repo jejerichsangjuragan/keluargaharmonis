@@ -206,9 +206,9 @@ function vitePluginStorageProxy(): Plugin {
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
 
 export default defineConfig({
-  // GitHub Pages menayangkan repository project di /keluargaharmonis/.
-  // Build Manus tetap memakai root URL / seperti sebelumnya.
-  base: process.env.GITHUB_PAGES ? "/keluargaharmonis/" : "/",
+  // Relative asset URLs let the same static artifact work at both
+  // /keluargaharmonis/ on GitHub Pages and / on the custom domain.
+  base: process.env.GITHUB_PAGES ? "./" : "/",
   plugins,
   resolve: {
     alias: {

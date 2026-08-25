@@ -8,9 +8,14 @@ import Home from "./pages/Home";
 
 
 function Router() {
-  // Vite injects /keluargaharmonis/ for the GitHub Pages build and / for Manus.
-  // Wouter must receive the same base so the repository subpath resolves to Home.
-  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  // The repository URL has a subpath, while the custom domain and Manus use root.
+  // Derive the router base from the actual pathname so one build works in both places.
+  const repoBase = "/keluargaharmonis";
+  const normalizedPath = window.location.pathname.replace(/\/+$/, "");
+  const base =
+    normalizedPath === repoBase || normalizedPath.startsWith(`${repoBase}/`)
+      ? repoBase
+      : "";
 
   return (
     <WouterRouter base={base}>

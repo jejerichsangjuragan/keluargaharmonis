@@ -13,3 +13,21 @@ Rencana perbaikan: gunakan GitHub Actions Pages workflow untuk build client dan 
 ## Batas izin
 
 Percobaan mengubah konfigurasi Pages menjadi `build_type: workflow` ditolak GitHub dengan HTTP 403 (`Resource not accessible by integration`). Karena Pages masih memakai legacy source `main` + `/`, perbaikan memakai fallback kompatibel: commit artifact build statis ke root repository (`index.html`, `assets/`, `gh-pages-assets/`) dengan base `/keluargaharmonis/`. Workflow Actions tetap disiapkan sebagai opsi, tetapi tidak menjadi satu-satunya jalur publikasi.
+
+## Uji setelah perbaikan pertama
+
+Setelah artifact root dan Router Wouter berbasis `BASE_URL` dipush, URL GitHub Pages masih menampilkan komponen `404 Page Not Found` milik aplikasi, bukan halaman 404 GitHub. Title HTML sudah benar dan tidak ada pesan console, sehingga HTML serta bundle JavaScript termuat; masalah tersisa berada pada pencocokan path Wouter terhadap `/keluargaharmonis/`.
+
+## Uji cache dan hasil akhir
+
+URL tanpa query sempat menampilkan bundle lama `index-BzooVz8A.js` dan komponen NotFound karena cache browser/CDN. Setelah dimuat dengan cache-buster `?v=4f67f549`, URL yang sama menampilkan landing page lengkap, link anchor, semua CTA WhatsApp, FAQ, dan aset lokal WebP. Artinya artifact terbaru berhasil dipublikasi dan routing subpath sudah benar; pengguna mungkin perlu hard refresh bila masih melihat halaman lama.
+
+Verifikasi terakhir dengan `?v=4f67f549-final`: landing page lengkap berhasil dirender di subpath, termasuk hero, navigasi, CTA WhatsApp, paket, testimoni, FAQ, dan aset `/keluargaharmonis/gh-pages-assets/*.webp`. URL tanpa query masih dapat terkena cache lama; hard refresh atau membuka URL dengan query memuat versi terbaru.
+
+## Pemeriksaan pengalihan ke domain baru
+
+Pada 25 Agustus 2026, URL sumber `https://jejerichsangjuragan.github.io/arduino-indonesia-hub/` tetap berada di URL GitHub Pages tersebut dengan judul `arduino.co.id — Belajar, Merakit, Berbagi`; belum terlihat pengalihan ke domain keluarga. Render browser tampak kosong tanpa elemen interaktif.
+
+Domain tujuan yang ditulis pengguna adalah `https://keluargaharomis.id` (tanpa huruf `n` pada `harmonis`). Hostname ini gagal di-resolve dari lingkungan pemeriksaan dengan `ERR_NAME_NOT_RESOLVED`, sehingga DNS domain belum tersedia atau ejaan domain perlu dikonfirmasi. Domain proyek sebelumnya adalah `keluargaharmonis.id`.
+
+Pemeriksaan variasi domain menunjukkan `https://keluargaharmonis.id/` (dengan huruf `n`) berhasil dijangkau dan memiliki judul Montecosme yang benar, sedangkan `keluargaharomis.id` tidak resolve. Browser belum menampilkan elemen interaktif untuk domain kanonis pada snapshot ini, tetapi hostname dan HTTPS dapat dijangkau.
