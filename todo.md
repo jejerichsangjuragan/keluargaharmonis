@@ -65,3 +65,10 @@
 - [ ] Pastikan logo, menu, dan CTA tetap terbaca saat scroll
 - [ ] Validasi desktop/mobile dan simpan checkpoint
 
+
+## Menu hamburger mobile
+- [ ] Tambahkan tombol hamburger dengan label aksesibel
+- [ ] Tampilkan navigasi mobile dan tutup saat link dipilih
+- [ ] Pastikan CTA dan header desktop tidak terganggu
+- [ ] Validasi desktop/mobile dan simpan checkpoint
+

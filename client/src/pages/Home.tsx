@@ -22,6 +22,8 @@ import {
   Star,
   Quote,
   Send,
+  Menu,
+  X,
 } from "lucide-react";
 import {
   Accordion,
@@ -151,43 +153,101 @@ function WhatsAppCTA({
 /* ---------- Header ---------- */
 function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
+  const navItems = [
+    ["#masalah", "Masalah & Solusi"],
+    ["#kandungan", "Kandungan"],
+    ["#paket", "Paket"],
+    ["#privasi", "Garansi Privasi"],
+    ["#testimoni", "Testimoni"],
+    ["#faq", "FAQ"],
+  ] as const;
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header
       className={`sticky inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/90 shadow-[0_4px_24px_-12px_rgba(46,74,59,0.25)] backdrop-blur-xl"
+        scrolled || menuOpen
+          ? "bg-background/95 shadow-[0_4px_24px_-12px_rgba(46,74,59,0.25)] backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5">
+        <a href="#top" className="flex items-center gap-2.5" onClick={closeMenu}>
           <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-11 w-11 shrink-0 object-contain md:h-12 md:w-12" />
           <span className="font-display text-lg font-semibold italic text-primary">
             Keluarga Harmonis
           </span>
         </a>
-        <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/75 md:flex">
-          <a href="#masalah" className="transition-colors hover:text-primary">Masalah & Solusi</a>
-          <a href="#kandungan" className="transition-colors hover:text-primary">Kandungan</a>
-          <a href="#paket" className="transition-colors hover:text-primary">Paket</a>
-          <a href="#privasi" className="transition-colors hover:text-primary">Garansi Privasi</a>
-          <a href="#testimoni" className="transition-colors hover:text-primary">Testimoni</a>
-          <a href="#faq" className="transition-colors hover:text-primary">FAQ</a>
+        <nav className="hidden items-center gap-7 text-sm font-medium text-foreground/75 md:flex" aria-label="Navigasi utama">
+          {navItems.map(([href, label]) => (
+            <a key={href} href={href} className="transition-colors hover:text-primary">{label}</a>
+          ))}
         </nav>
-        <a
-          href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-press cta-dark inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
-        >
-          <MessageCircle className="cta-icon size-4" /> Pesan Sekarang
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-press cta-dark hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 md:inline-flex"
+          >
+            <MessageCircle className="cta-icon size-4" /> Pesan Sekarang
+          </a>
+          <button
+            type="button"
+            className="btn-press inline-flex size-11 items-center justify-center rounded-full border border-primary/20 bg-background/80 text-primary shadow-sm backdrop-blur-sm transition hover:bg-accent md:hidden"
+            aria-label={menuOpen ? "Tutup navigasi" : "Buka navigasi"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
+      </div>
+      <div
+        id="mobile-navigation"
+        className={`overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-200 md:hidden ${menuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"}`}
+        aria-hidden={!menuOpen}
+      >
+        <nav className="container flex flex-col py-3" aria-label="Navigasi mobile">
+          {navItems.map(([href, label]) => (
+            <a
+              key={href}
+              href={href}
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={closeMenu}
+              className="border-b border-border/60 py-3 text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={menuOpen ? 0 : -1}
+            className="btn-press cta-dark mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90"
+          >
+            <MessageCircle className="cta-icon size-4" /> Pesan Sekarang via WhatsApp
+          </a>
+        </nav>
       </div>
     </header>
   );
