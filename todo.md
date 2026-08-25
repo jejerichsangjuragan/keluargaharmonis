@@ -17,3 +17,9 @@
 - [ ] Uji URL sumber, URL tujuan, dan tampilan final
 - [ ] Laporkan status tayang dan langkah registrar/DNS bila akses diperlukan
 
+## Klarifikasi repository domain
+- [ ] Verifikasi repository `keluargaharmonis` sebagai sumber domain aktif
+- [ ] Pastikan CNAME, base path, dan artifact root tetap konsisten
+- [ ] Verifikasi URL Arduino adalah repository terpisah dan belum diarahkan
+- [ ] Uji domain aktif dan siapkan penjelasan redirect lintas repository
+

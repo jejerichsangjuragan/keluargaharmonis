@@ -22,7 +22,6 @@ import {
   Star,
   Quote,
   Send,
-  PenLine,
 } from "lucide-react";
 import {
   Accordion,
@@ -135,20 +134,6 @@ function WhatsAppCTA({ label, sub, big }: { label: string; sub?: string; big?: b
   );
 }
 
-/* ---------- Section number ---------- */
-function SectionNum({ n, title }: { n: string; title: string }) {
-  return (
-    <div className="mb-8 flex items-end gap-4">
-      <span className="font-display text-5xl font-light text-primary/25 leading-none md:text-6xl">
-        {n}
-      </span>
-      <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
-        {title}
-      </h2>
-    </div>
-  );
-}
-
 /* ---------- Header ---------- */
 function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -216,7 +201,7 @@ function Hero() {
             <span className="pill-badge bg-accent text-accent-foreground">
               <Leaf className="size-3.5" /> Herbal Natural
             </span>
-            <span className="pill-badge bg-[#25D366] text-white">
+            <span className="pill-badge bg-primary text-primary-foreground">
               <Lock className="size-3.5" /> Privasi Dijamin 100%
             </span>
           </div>
@@ -279,7 +264,7 @@ function ProblemSolution() {
   return (
     <section id="masalah" className="relative py-20 md:py-28">
       <div className="container">
-        <SectionNum n="01" title="Masalah yang Sering Tak Terucap" />
+        <h2 className="mb-8 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Masalah yang Sering Tak Terucap</h2>
         <div className="grid gap-5 md:grid-cols-3">
           {problems.map((p, i) => (
             <div
@@ -360,7 +345,7 @@ function Ingredients() {
       <div className="container">
         <div className="grid items-center gap-12">
           <div>
-            <SectionNum n="02" title="Kandungan Alami untuk Kulit Sensitif" />
+            <h2 className="mb-8 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Kandungan Alami untuk Kulit Sensitif</h2>
             <p className="reveal-left -mt-2 max-w-xl text-base leading-relaxed text-muted-foreground">
               Diformulasikan dengan bahan-bahan alami pilihan yang menjaga
               kebersihan sekaligus kesegaran kulit sensitif pria.
@@ -485,12 +470,9 @@ function Pricing() {
   return (
     <section id="paket" className="py-20 md:py-28">
       <div className="container">
-        <div className="reveal mb-4 flex items-end gap-4">
-          <span className="font-display text-5xl font-light text-primary/25 leading-none md:text-6xl">03</span>
-          <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
-            Pilih Paket yang Pas Buat Kamu
-          </h2>
-        </div>
+        <h2 className="reveal mb-4 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
+          Pilih Paket yang Pas Buat Kamu
+        </h2>
         <p className="reveal -mt-2 mb-6 max-w-xl text-base leading-relaxed text-muted-foreground">
           Karena ukurannya ringkas 3 mL, paling menguntungkan ambil paket bundling
           — lebih hemat per pcs dan selalu ada cadangan.
@@ -507,7 +489,7 @@ function Pricing() {
               }`}
             >
               {p.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-[#25D366] px-4 py-1.5 text-xs font-semibold text-white shadow-lg">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-[#f5c55a] px-4 py-1.5 text-xs font-semibold text-primary shadow-lg">
                   <Star className="size-3.5" /> Best Seller
                 </span>
               )}
@@ -542,12 +524,9 @@ function Privacy() {
   return (
     <section id="privasi" className="relative bg-accent/40 py-20 md:py-28">
       <div className="container">
-        <div className="reveal mb-4 flex items-end gap-4">
-          <span className="font-display text-5xl font-light text-primary/25 leading-none md:text-6xl">04</span>
-          <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
-            Garansi Privasi 100%
-          </h2>
-        </div>
+        <h2 className="reveal mb-4 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
+          Garansi Privasi 100%
+        </h2>
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div className="reveal order-2 md:order-1">
             <img
@@ -603,7 +582,7 @@ function Tips() {
   return (
     <section className="py-20 md:py-24">
       <div className="container">
-        <SectionNum n="07" title="Tips Keluarga Harmonis dari Kami" />
+        <h2 className="mb-8 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">Tips Keluarga Harmonis dari Kami</h2>
         <div className="grid gap-6 md:grid-cols-3">
           {tips.map((tip, i) => (
             <div
@@ -612,8 +591,7 @@ function Tips() {
                 i === 1 ? "md:mt-6" : i === 2 ? "md:mt-12" : ""
               }`}
             >
-              <span className="font-display text-4xl font-light text-primary/30">{String(i + 1).padStart(2, "0")}</span>
-              <h4 className="mt-3 font-display text-lg font-semibold">{tip.t}</h4>
+              <h4 className="font-display text-lg font-semibold">{tip.t}</h4>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tip.d}</p>
             </div>
           ))}
@@ -630,14 +608,8 @@ function Testimonials() {
    * Jangan mengisi array ini dengan ulasan fiktif / buatan sendiri.
    * Hanya gunakan testimoni asli dari pembeli sungguhan (chat WhatsApp,
    * screenshot chat, Google Reviews, dsb.) dan minta izin mereka bila
-   * mencantumkan nama. Kartu kosong disediakan agar desain siap diisi.
+   * mencantumkan nama. Panel kepercayaan ini menjelaskan standar publikasi ulasan.
    */
-  const reviews: Array<{ name: string; text: string; date: string } | null> = [
-    null,
-    null,
-    null,
-  ];
-
   return (
     <section id="testimoni" className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
       {/* Dekorasi daun editorial */}
@@ -645,12 +617,9 @@ function Testimonials() {
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-primary-foreground/[0.05] blur-3xl" />
         <div className="container relative">
         <div className="reveal-left mb-4 flex flex-wrap items-end gap-x-5 gap-y-4">
-          <div className="flex items-end gap-4">
-            <span className="font-display text-5xl font-light leading-none text-primary-foreground/30 md:text-6xl">05</span>
-            <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
-              Kata Mereka yang Sudah Mencoba
-            </h2>
-          </div>
+          <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
+            Kata Mereka yang Sudah Mencoba
+          </h2>
           {/* Badge rating agregat — tampilkan rata-rata NYATA dari kumpulan testimoni yang masuk */}
           <div className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/20 bg-primary-foreground/[0.07] px-5 py-2.5 shadow-[0_8px_24px_-10px_rgba(0,0,0,0.4)]">
             <div className="flex items-center gap-1 text-[#f5c55a]">
@@ -659,7 +628,7 @@ function Testimonials() {
               ))}
             </div>
             <span className="font-display text-lg font-semibold">5.0</span>
-            <span className="text-xs text-primary-foreground/60">dari pembeli yang meninggalkan ulasan</span>
+            <span className="text-xs text-primary-foreground/60">target rating kepuasan</span>
           </div>
         </div>
         <p className="reveal-left -mt-2 mb-12 max-w-xl text-base leading-relaxed text-primary-foreground/70">
@@ -667,45 +636,36 @@ function Testimonials() {
           hanya kami tampilkan dari pembeli yang benar-benar merasakan Montecosme.
         </p>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {reviews.map((r, i) => (
-            <div
-              key={i}
-              className={`reveal hover-lift relative flex flex-col rounded-3xl border border-primary-foreground/15 bg-primary-foreground/[0.05] p-8 backdrop-blur-sm ${
-                i === 1 ? "md:mt-8" : i === 2 ? "md:mt-16" : ""
-              }`}
-            >
-              <Quote className="mb-5 size-7 text-[#7fd4a2]" />
-              {r ? (
-                <>
-                  <p className="flex-1 font-display text-lg italic leading-relaxed text-primary-foreground/90">
-                    “{r.text}”
-                  </p>
-                  <div className="mt-6 border-t border-primary-foreground/15 pt-4">
-                    <div className="flex items-center gap-1 text-[#f5c55a]">
-                      {[...Array(5)].map((_, s) => (
-                        <Star key={s} className="size-4 fill-current" />
-                      ))}
-                    </div>
-                    <div className="mt-2 flex items-center justify-between">
-                      <span className="font-semibold">{r.name}</span>
-                      <span className="text-xs text-primary-foreground/50">{r.date}</span>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                /* Kartu kosong — tampilan elegan saat belum ada testimoni asli */
-                <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-dashed border-primary-foreground/30">
-                    <PenLine className="size-5 text-primary-foreground/50" />
-                  </div>
-                  <p className="text-sm text-primary-foreground/60">
-                    Testimoni pembeli asli akan tampil di sini
-                  </p>
-                </div>
-              )}
+        <div className="grid gap-6 md:grid-cols-[1.15fr_0.85fr] md:items-start">
+          <div className="reveal relative rounded-[2rem] border border-primary-foreground/15 bg-primary-foreground/[0.06] p-8 backdrop-blur-sm md:p-10">
+            <Quote className="mb-6 size-9 text-[#7fd4a2]" />
+            <p className="max-w-2xl font-display text-2xl italic leading-relaxed text-primary-foreground/95 md:text-3xl">
+              "Ruang ini disiapkan untuk pengalaman nyata dari pembeli Montecosme — bukan klaim yang dibuat-buat."
+            </p>
+            <div className="mt-8 flex items-center gap-3 border-t border-primary-foreground/15 pt-5 text-sm text-primary-foreground/60">
+              <span className="inline-flex size-8 items-center justify-center rounded-full bg-primary-foreground/10 text-[#7fd4a2]" aria-hidden="true">
+                <ShieldCheck className="size-4" />
+              </span>
+              <span>Catatan pelanggan terverifikasi akan ditampilkan setelah izin diberikan.</span>
             </div>
-          ))}
+          </div>
+          <div className="reveal-right rounded-[2rem] border border-[#f5c55a]/30 bg-[#f5c55a]/10 p-8 md:mt-12">
+            <div className="mb-5 inline-flex size-11 items-center justify-center rounded-full bg-[#f5c55a] text-primary">
+              <ShieldCheck className="size-5" />
+            </div>
+            <h3 className="font-display text-2xl font-semibold text-primary-foreground">Kepercayaan tumbuh dari bukti.</h3>
+            <p className="mt-3 text-sm leading-relaxed text-primary-foreground/70">
+              Kami hanya mempublikasikan ulasan dari pembeli sungguhan, dengan nama atau inisial sesuai persetujuan mereka.
+            </p>
+            <a
+              href={waMessage("Halo, saya ingin berbagi pengalaman nyata menggunakan Montecosme.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-press cta-dark mt-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:border-primary-foreground/50"
+            >
+              <Send className="size-4" /> Bagikan Pengalaman
+            </a>
+          </div>
         </div>
 
         {/* Ajakan untuk testimoni — mengarah ke WhatsApp */}
@@ -762,12 +722,9 @@ function FAQ() {
       <div className="container">
         <div className="grid gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-start">
           <div>
-            <div className="reveal-left mb-4 flex items-end gap-4">
-              <span className="font-display text-5xl font-light leading-none text-primary/25 md:text-6xl">06</span>
-              <h2 className="font-display text-3xl font-semibold leading-tight md:text-4xl">
-                Pertanyaan yang Sering Diajukan
-              </h2>
-            </div>
+            <h2 className="reveal-left mb-4 font-display text-3xl font-semibold leading-tight md:text-4xl">
+              Pertanyaan yang Sering Diajukan
+            </h2>
             <p className="reveal-left -mt-2 max-w-sm text-base leading-relaxed text-muted-foreground">
               Belum menemukan jawaban yang kamu cari? Tim kami siap membantu
               langsung via WhatsApp — respons cepat dan ramah.

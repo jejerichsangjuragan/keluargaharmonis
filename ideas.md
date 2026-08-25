@@ -80,3 +80,7 @@ Hijau apotek dalam `#2E4A3B` — semua section penting dan CTA utama bersumber d
 ## Catatan Kepatuhan
 - Copy harus aman untuk iklan (Meta/Google): tidak klaim medis/obat, tidak vulgar. Fokus pada kebersihan, kesegaran, percaya diri, dan keharmonisan keluarga.
 - CTA utama: tombol WhatsApp dengan pesan pre-filled; form alternatif COD.
+
+- CTA rule: hijau terang WhatsApp hanya dipakai untuk aksi utama; badge dan elemen pendukung kembali ke hijau apotek, sage, krem, atau emas lembut.
+- Editorial layout rule: heading section tidak lagi memakai angka; hierarki digantikan oleh tipografi Fraunces, staggered cards, offset media, dan whitespace asimetris.
+- Proof rule: area testimoni tidak menampilkan kartu kosong; sebelum ulasan nyata tersedia, tampil sebagai panel kepercayaan dan standar publikasi ulasan yang transparan.

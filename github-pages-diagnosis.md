@@ -31,3 +31,9 @@ Pada 25 Agustus 2026, URL sumber `https://jejerichsangjuragan.github.io/arduino-
 Domain tujuan yang ditulis pengguna adalah `https://keluargaharomis.id` (tanpa huruf `n` pada `harmonis`). Hostname ini gagal di-resolve dari lingkungan pemeriksaan dengan `ERR_NAME_NOT_RESOLVED`, sehingga DNS domain belum tersedia atau ejaan domain perlu dikonfirmasi. Domain proyek sebelumnya adalah `keluargaharmonis.id`.
 
 Pemeriksaan variasi domain menunjukkan `https://keluargaharmonis.id/` (dengan huruf `n`) berhasil dijangkau dan memiliki judul Montecosme yang benar, sedangkan `keluargaharomis.id` tidak resolve. Browser belum menampilkan elemen interaktif untuk domain kanonis pada snapshot ini, tetapi hostname dan HTTPS dapat dijangkau.
+
+## Status domain kanonis setelah perbaikan
+
+`https://keluargaharmonis.id/?v=d7a9a27b` berhasil menampilkan landing page lengkap dengan headline, navigasi, CTA WhatsApp, paket, testimoni, FAQ, dan gambar produk. HTTP untuk `gh-pages-assets/montecosme-product.webp`, `gh-pages-assets/montecosme-hero-bg.webp`, serta bundle JavaScript terbaru semuanya 200; console browser tidak mencatat error. GitHub Pages API mencatat CNAME `keluargaharmonis.id`, source `main:/`, dan HTTPS enforcement belum aktif.
+
+Domain `keluargaharomis.id` tetap tidak resolve. Itu berbeda ejaan dari domain kanonis `keluargaharmonis.id` dan tidak dapat dijadikan target redirect sebelum DNS serta konfigurasi domainnya tersedia.
