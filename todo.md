@@ -131,3 +131,10 @@
 - [x] Validasi build serta tampilan desktop/mobile
 - [ ] Simpan checkpoint setelah hasil tervalidasi
 
+
+## Diagnosis publishing tertahan
+- [ ] Periksa status proyek, deployment, dan log workflow terbaru
+- [ ] Identifikasi konflik atau proses publish yang macet
+- [ ] Lakukan pemulihan aman bila diperlukan dan verifikasi layanan
+- [ ] Catat hasil diagnosis dan langkah lanjutan
+
