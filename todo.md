@@ -138,3 +138,10 @@
 - [ ] Lakukan pemulihan aman bila diperlukan dan verifikasi layanan
 - [ ] Catat hasil diagnosis dan langkah lanjutan
 
+
+## Menonaktifkan workflow Pages tambahan
+- [x] Periksa workflow tambahan dan status Pages bawaan
+- [x] Nonaktifkan workflow tambahan tanpa mengubah artifact situs
+- [x] Validasi konfigurasi dan deployment Pages bawaan
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+
