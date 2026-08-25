@@ -296,7 +296,7 @@ function Hero() {
             Saku aman, siap nemenin kamu ke mana pun.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-5">
-            <WhatsAppCTA label="Pesan Sekarang via WhatsApp" sub="Privasi Terjaga — Bisa COD" big />
+            <WhatsAppCTA label="Pesan Sekarang via WhatsApp" big />
             <a
               href="#paket"
               className="inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
@@ -900,7 +900,6 @@ function FinalCTA() {
               <MessageCircle className="cta-icon size-5" /> Pesan Sekarang via WhatsApp
               <ArrowRight className="cta-arrow size-4" />
             </span>
-            <span className="text-xs font-normal opacity-90">Privasi Terjaga — Tersedia COD / Bayar di Tempat</span>
           </a>
         </div>
       </div>

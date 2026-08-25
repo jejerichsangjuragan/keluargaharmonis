@@ -110,3 +110,10 @@
 - [x] Validasi build, workflow, dan URL domain custom setelah perubahan
 - [ ] Simpan checkpoint setelah hasil tervalidasi
 
+
+## Penghapusan frasa COD
+- [x] Audit semua kemunculan "Bisa COD" dan "Tersedia COD/Bayar di Tempat"
+- [x] Hapus frasa dari source, metadata, dan artifact Pages
+- [x] Validasi build serta tampilan desktop/mobile
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+
