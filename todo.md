@@ -59,3 +59,9 @@
 - [ ] Pasang logo sebagai favicon
 - [ ] Uji desktop/mobile dan simpan checkpoint
 
+
+## Sticky header
+- [ ] Ubah header menjadi sticky di bagian atas viewport
+- [ ] Pastikan logo, menu, dan CTA tetap terbaca saat scroll
+- [ ] Validasi desktop/mobile dan simpan checkpoint
+

@@ -159,7 +159,7 @@ function Header() {
   }, []);
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`sticky inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-background/90 shadow-[0_4px_24px_-12px_rgba(46,74,59,0.25)] backdrop-blur-xl"
           : "bg-transparent"
