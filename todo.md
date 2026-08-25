@@ -103,3 +103,10 @@
 - [ ] Kurangi gap yang terlalu renggang secara responsif
 - [ ] Validasi ritme spacing desktop/mobile dan simpan checkpoint
 
+
+## Cache-busting otomatis GitHub Pages
+- [x] Tinjau workflow GitHub Pages dan konfigurasi artifact saat ini
+- [x] Tambahkan query version otomatis pada referensi aset atau strategi hashing deployment
+- [x] Validasi build, workflow, dan URL domain custom setelah perubahan
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+
