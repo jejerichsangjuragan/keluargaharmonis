@@ -41,14 +41,14 @@ const ASSETS = IS_GITHUB_PAGES
       heroBg: GH_ASSET("montecosme-hero-bg.webp"),
       ingredients: GH_ASSET("montecosme-ingredients.webp"),
       privacy: GH_ASSET("montecosme-privacy.webp"),
-      logo: GH_ASSET("montecosme-logo.webp"),
+      logo: GH_ASSET("keluargaharmonis-logo.webp"),
     }
   : {
       product: "/manus-storage/montecosme-product_7957a22d.png",
       heroBg: "/manus-storage/montecosme-hero-bg_7640bb1c.png",
       ingredients: "/manus-storage/montecosme-ingredients_3563a2f7.png",
       privacy: "/manus-storage/montecosme-privacy_016fd02e.png",
-      logo: "/manus-storage/montecosme-logo_6d4ab31e.png",
+      logo: "/manus-storage/keluargaharmonis-logo_693597bf.webp",
     };
 
 /* Ubah nomor ini ke nomor WhatsApp bisnis Anda (format internasional tanpa +) */
@@ -167,7 +167,7 @@ function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5">
-          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-9 w-9" />
+          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-11 w-11 shrink-0 object-contain md:h-12 md:w-12" />
           <span className="font-display text-lg font-semibold italic text-primary">
             Keluarga Harmonis
           </span>
@@ -850,7 +850,7 @@ function Footer() {
     <footer className="border-t border-border bg-card py-10">
       <div className="container flex flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-2.5">
-          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-8 w-8" />
+          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-14 w-14 shrink-0 object-contain" />
           <div>
             <div className="font-display font-semibold italic text-primary">Keluarga Harmonis</div>
             <div className="text-xs text-muted-foreground">Keluargaharmonis.id — Tips keluarga & perawatan pria alami</div>

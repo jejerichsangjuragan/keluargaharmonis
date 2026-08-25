@@ -52,3 +52,10 @@
 - [ ] Uji harga dan CTA baru dengan cache-buster
 - [ ] Laporkan status tayang serta kemungkinan cache CDN
 
+
+## Integrasi logo Keluarga Harmonis
+- [ ] Salin dan optimalkan logo pengguna untuk aset website
+- [ ] Pasang logo pada header dan footer
+- [ ] Pasang logo sebagai favicon
+- [ ] Uji desktop/mobile dan simpan checkpoint
+
