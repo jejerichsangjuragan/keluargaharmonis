@@ -72,3 +72,9 @@
 - [ ] Pastikan CTA dan header desktop tidak terganggu
 - [ ] Validasi desktop/mobile dan simpan checkpoint
 
+
+## Badge Buka 24 Jam
+- [ ] Tambahkan ikon jam dan badge Buka 24 Jam pada header
+- [ ] Pastikan badge responsif dan tidak mengganggu CTA/hamburger
+- [ ] Validasi build serta simpan checkpoint
+

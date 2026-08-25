@@ -24,6 +24,7 @@ import {
   Send,
   Menu,
   X,
+  Clock3,
 } from "lucide-react";
 import {
   Accordion,
@@ -201,6 +202,9 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
+          <span className="hidden items-center gap-1.5 rounded-full border border-primary/15 bg-accent/80 px-3 py-1.5 text-[11px] font-semibold text-primary md:inline-flex" aria-label="Buka 24 Jam">
+            <Clock3 className="size-3.5" /> Buka 24 Jam
+          </span>
           <a
             href={waMessage("Halo, saya ingin tanya tentang Montecosme.")}
             target="_blank"
@@ -227,6 +231,10 @@ function Header() {
         aria-hidden={!menuOpen}
       >
         <nav className="container flex flex-col py-3" aria-label="Navigasi mobile">
+          <div className="flex items-center gap-2 border-b border-border/60 pb-3 text-xs font-semibold text-primary">
+            <Clock3 className="size-4" />
+            <span>Buka 24 Jam</span>
+          </div>
           {navItems.map(([href, label]) => (
             <a
               key={href}
