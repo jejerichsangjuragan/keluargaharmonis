@@ -23,3 +23,11 @@
 - [ ] Verifikasi URL Arduino adalah repository terpisah dan belum diarahkan
 - [ ] Uji domain aktif dan siapkan penjelasan redirect lintas repository
 
+
+## Tabel harga paket Montecosme
+- [ ] Masukkan harga Paket Coba, Paket Hemat, dan Paket Reseller
+- [ ] Tampilkan harga coret hanya pada Paket Coba sesuai data pengguna
+- [ ] Bangun hierarki visual tabel yang mudah dipindai dan responsif
+- [ ] Jalankan check/build dan verifikasi desktop serta mobile
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+

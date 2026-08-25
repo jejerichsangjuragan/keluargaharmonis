@@ -2,7 +2,7 @@
  * DESIGN: Botanical Apothecary — keluargaharmonis.id / Montecosme
  * Style: cream base (#F7F3EA) + deep forest green (#2E4A3B), sage & gold accents.
  * Fonts: Fraunces (display) + Outfit (body). Editorial asimetris, whitespace bernapas.
- * Signature: pill badges, nomor section serif besar, daun organic motif, CTA WhatsApp hijau.
+ * Signature: pill badges, editorial headings, daun organic motif, CTA WhatsApp hijau.
  * Copy: hangat, dewasa, aman untuk iklan — fokus kebersihan, kesegaran, percaya diri.
  */
 import { useEffect, useRef, useState } from "react";
@@ -447,10 +447,12 @@ function Pricing() {
   const plans = [
     {
       name: "Paket Coba",
-      qty: "1 Pcs",
+      qty: "1 pcs",
       desc: "Cocok untuk mencoba dulu rasanya",
       popular: false,
       perUnit: "Harga satuan",
+      price: "Rp175.000",
+      compareAt: "Rp250.000",
     },
     {
       name: "Paket Hemat",
@@ -458,61 +460,80 @@ function Pricing() {
       desc: "3 pcs dengan harga 2 — paling laris!",
       popular: true,
       perUnit: "Best Seller",
+      price: "Rp500.000",
     },
     {
-      name: "Paket Stok / Reseller",
-      qty: "Isi 5 Pcs",
+      name: "Paket Reseller",
+      qty: "5 pcs",
       desc: "Stok hemat atau mulai jualan kembali",
       popular: false,
-      perUnit: "Margin Reseller",
+      perUnit: "Untuk stok",
+      price: "Rp750.000",
     },
   ];
   return (
     <section id="paket" className="py-20 md:py-28">
       <div className="container">
-        <h2 className="reveal mb-4 max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
-          Pilih Paket yang Pas Buat Kamu
-        </h2>
+        <div className="reveal mb-4 flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <span className="mb-3 inline-flex rounded-full border border-primary/15 bg-accent px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">
+              Montecosme · Harga resmi
+            </span>
+            <h2 className="max-w-xl font-display text-3xl font-semibold leading-tight md:text-4xl">
+              Pilih Paket yang Pas Buat Kamu
+            </h2>
+          </div>
+          <span className="max-w-xs text-right text-xs leading-relaxed text-muted-foreground">
+            Harga ditampilkan transparan. Pilih paket yang paling sesuai dengan kebutuhanmu.
+          </span>
+        </div>
         <p className="reveal -mt-2 mb-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-          Karena ukurannya ringkas 3 mL, paling menguntungkan ambil paket bundling
-          — lebih hemat per pcs dan selalu ada cadangan.
+          Karena ukurannya ringkas 3 mL, paket bundling membantu kamu punya cadangan
+          tanpa perlu sering memesan ulang.
         </p>
         <PromoTimer />
-        <div className="grid items-stretch gap-6 md:grid-cols-3">
-          {plans.map((p) => (
+        <div className="reveal overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_24px_60px_-35px_rgba(46,74,59,0.35)]">
+          <div className="hidden grid-cols-[1.25fr_0.85fr_1fr_0.95fr] gap-4 border-b border-border bg-accent/50 px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground md:grid">
+            <span>Paket</span>
+            <span>Isi</span>
+            <span>Harga</span>
+            <span className="text-right">Pesan</span>
+          </div>
+          {plans.map((p, i) => (
             <div
               key={p.name}
-              className={`reveal hover-lift relative flex flex-col rounded-3xl border p-8 ${
-                p.popular
-                  ? "border-primary bg-primary text-primary-foreground shadow-[0_28px_60px_-28px_rgba(46,74,59,0.5)] md:-mt-6 md:mb-6"
-                  : "border-border bg-card"
-              }`}
+              className={`grid gap-5 px-6 py-7 md:grid-cols-[1.25fr_0.85fr_1fr_0.95fr] md:items-center md:gap-4 md:px-8 ${
+                i < plans.length - 1 ? "border-b border-border" : ""
+              } ${p.popular ? "bg-primary text-primary-foreground" : "bg-card"}`}
             >
-              {p.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 rounded-full bg-[#f5c55a] px-4 py-1.5 text-xs font-semibold text-primary shadow-lg">
-                  <Star className="size-3.5" /> Best Seller
-                </span>
-              )}
-              <div className="mb-1 inline-flex w-fit items-center gap-1.5">
-                <PackageCheck className={`size-4 ${p.popular ? "text-[#7fd4a2]" : "text-sage"}`} />
-                <span className={`pill-badge !px-2.5 py-1 ${p.popular ? "bg-primary-foreground/10" : "bg-accent"}`}>
-                  {p.perUnit}
-                </span>
+              <div>
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  <PackageCheck className={`size-4 ${p.popular ? "text-[#7fd4a2]" : "text-sage"}`} />
+                  <span className={`pill-badge !px-2.5 py-1 ${p.popular ? "bg-primary-foreground/10 text-primary-foreground" : "bg-accent"}`}>
+                    {p.perUnit}
+                  </span>
+                  {p.popular && <span className="rounded-full bg-[#f5c55a] px-2.5 py-1 text-[10px] font-bold text-primary">Pilihan utama</span>}
+                </div>
+                <h3 className="font-display text-2xl font-semibold">{p.name}</h3>
+                <p className={`mt-1.5 text-sm ${p.popular ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{p.desc}</p>
               </div>
-              <h3 className="font-display text-2xl font-semibold">{p.name}</h3>
-              <p className={`mt-2 text-sm ${p.popular ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                {p.desc}
-              </p>
-              <div className="my-5 font-display text-3xl font-semibold">{p.qty}</div>
-              <WhatsAppCTA
-                label={`Pesan ${p.name}`}
-                sub="via WhatsApp"
-              />
+              <div>
+                <span className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${p.popular ? "text-primary-foreground/55" : "text-muted-foreground"}`}>Isi paket</span>
+                <div className="mt-1 font-display text-xl font-semibold">{p.qty}</div>
+              </div>
+              <div>
+                <span className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${p.popular ? "text-primary-foreground/55" : "text-muted-foreground"}`}>Harga jual</span>
+                <div className="mt-1 flex flex-wrap items-baseline gap-2">
+                  {p.compareAt && <span className={`text-sm line-through ${p.popular ? "text-primary-foreground/45" : "text-muted-foreground/70"}`}>{p.compareAt}</span>}
+                  <span className="font-display text-2xl font-semibold md:text-3xl">{p.price}</span>
+                </div>
+              </div>
+              <WhatsAppCTA label={`Pesan ${p.name}`} sub="via WhatsApp" />
             </div>
           ))}
         </div>
-        <p className="reveal mt-8 text-center text-sm text-muted-foreground">
-          Harga tersedia via WhatsApp — kami kasih penawaran terbaik sesuai paket pilihanmu.
+        <p className="reveal mt-6 text-center text-xs leading-relaxed text-muted-foreground">
+          Harga Paket Coba menampilkan harga coret sesuai penawaran yang diberikan. Paket lain ditampilkan dengan harga jual saat ini.
         </p>
       </div>
     </section>
