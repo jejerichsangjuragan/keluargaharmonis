@@ -587,7 +587,7 @@ function Pricing() {
               key={p.name}
               className={`grid gap-5 px-6 py-7 md:grid-cols-[1.25fr_0.85fr_1fr_0.95fr] md:items-center md:gap-4 md:px-8 ${
                 i < plans.length - 1 ? "border-b border-border" : ""
-              } ${p.popular ? "bg-primary text-primary-foreground" : "bg-card"}`}
+              } ${p.popular ? "price-row price-row-featured bg-primary text-primary-foreground" : "price-row bg-card"}`}
             >
               <div>
                 <div className="mb-2 flex flex-wrap items-center gap-2">

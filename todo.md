@@ -84,3 +84,10 @@
 - [ ] Hapus badge Buka 24 Jam dari isi panel hamburger
 - [ ] Validasi posisi serta responsivitas header dan simpan checkpoint
 
+
+## Smooth scroll dan hover kartu harga
+- [ ] Aktifkan smooth scroll untuk tautan internal navigasi
+- [ ] Hormati preferensi reduced motion pengguna
+- [ ] Tambahkan hover shadow dan elevasi pada kartu paket harga
+- [ ] Validasi desktop/mobile dan simpan checkpoint
+
