@@ -201,7 +201,10 @@ function Header() {
             <a key={href} href={href} className="transition-colors hover:text-primary">{label}</a>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+        <span className="mr-1 inline-flex shrink-0 items-center gap-1 rounded-full border border-primary/15 bg-accent/80 px-2 py-1.5 text-[10px] font-semibold text-primary md:hidden" aria-label="Buka 24 Jam">
+          <Clock3 className="size-3" /> Buka 24 Jam
+        </span>
+        <div className="flex shrink-0 items-center gap-2">
           <span className="hidden items-center gap-1.5 rounded-full border border-primary/15 bg-accent/80 px-3 py-1.5 text-[11px] font-semibold text-primary md:inline-flex" aria-label="Buka 24 Jam">
             <Clock3 className="size-3.5" /> Buka 24 Jam
           </span>
@@ -231,10 +234,6 @@ function Header() {
         aria-hidden={!menuOpen}
       >
         <nav className="container flex flex-col py-3" aria-label="Navigasi mobile">
-          <div className="flex items-center gap-2 border-b border-border/60 pb-3 text-xs font-semibold text-primary">
-            <Clock3 className="size-4" />
-            <span>Buka 24 Jam</span>
-          </div>
           {navItems.map(([href, label]) => (
             <a
               key={href}

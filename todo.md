@@ -78,3 +78,9 @@
 - [ ] Pastikan badge responsif dan tidak mengganggu CTA/hamburger
 - [ ] Validasi build serta simpan checkpoint
 
+
+## Posisi badge mobile
+- [ ] Pindahkan badge Buka 24 Jam ke antara wordmark dan hamburger
+- [ ] Hapus badge Buka 24 Jam dari isi panel hamburger
+- [ ] Validasi posisi serta responsivitas header dan simpan checkpoint
+
