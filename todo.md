@@ -117,3 +117,10 @@
 - [x] Validasi build serta tampilan desktop/mobile
 - [ ] Simpan checkpoint setelah hasil tervalidasi
 
+
+## Subteks kredibilitas CTA
+- [x] Audit struktur CTA atas dan bawah
+- [x] Tambahkan subteks Herbal Natural dan Terdaftar BPOM sesuai posisi CTA
+- [x] Validasi build serta tampilan desktop/mobile
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+
