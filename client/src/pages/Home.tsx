@@ -114,12 +114,26 @@ function useParallax() {
 }
 
 /* ---------- CTA Buttons (efek hover premium: glossy sweep + glow + icon bounce) ---------- */
-function WhatsAppCTA({ label, sub, big }: { label: string; sub?: string; big?: boolean }) {
+function WhatsAppCTA({
+  label,
+  sub,
+  big,
+  packageName,
+  price,
+}: {
+  label: string;
+  sub?: string;
+  big?: boolean;
+  packageName?: string;
+  price?: string;
+}) {
+  const message = packageName && price
+    ? `Halo, saya ingin pesan ${packageName} Montecosme dengan harga ${price}. Mohon dibantu prosesnya.`
+    : "Halo, saya ingin pesan Montecosme Men's Care Spray 3mL. Boleh dibantu pilihan paketnya?";
+
   return (
     <a
-      href={waMessage(
-        "Halo, saya ingin pesan Montecosme Men's Care Spray 3mL. Boleh dibantu pilihan paketnya?"
-      )}
+      href={waMessage(message)}
       target="_blank"
       rel="noopener noreferrer"
       className={`btn-press cta-wa inline-flex flex-col items-center gap-1 rounded-2xl bg-[#25D366] px-7 py-4 text-primary-foreground shadow-lg hover:bg-[#20bd5a] ${big ? "wa-pulse" : ""}`}
@@ -530,7 +544,12 @@ function Pricing() {
                   <span className="font-display text-2xl font-semibold md:text-3xl">{p.price}</span>
                 </div>
               </div>
-              <WhatsAppCTA label={`Pesan ${p.name}`} sub="via WhatsApp" />
+              <WhatsAppCTA
+                label={`Pesan ${p.name}`}
+                sub={`${p.price} · via WhatsApp`}
+                packageName={p.name}
+                price={p.price}
+              />
             </div>
           ))}
         </div>

@@ -38,3 +38,9 @@
 - [ ] Perbarui harga coret dan harga jual Paket Reseller
 - [ ] Validasi tampilan harga desktop/mobile dan simpan checkpoint
 
+
+## CTA spesifik per paket
+- [ ] Sesuaikan pesan WhatsApp dengan nama paket dan harga jual
+- [ ] Tampilkan label CTA yang jelas untuk Paket Coba, Hemat, dan Reseller
+- [ ] Validasi CTA pada desktop/mobile dan simpan checkpoint
+
