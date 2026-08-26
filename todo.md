@@ -145,3 +145,11 @@
 - [x] Validasi konfigurasi dan deployment Pages bawaan
 - [ ] Simpan checkpoint setelah hasil tervalidasi
 
+
+## Optimasi PageSpeed mobile dan desktop
+- [x] Audit aset, loading, API usang, error konsol, dan struktur halaman
+- [x] Optimalkan loading aset serta runtime mobile
+- [x] Perbaiki praktik terbaik, keamanan, dan error browser
+- [x] Uji responsif dan validasi build produksi
+- [ ] Simpan checkpoint setelah hasil tervalidasi
+

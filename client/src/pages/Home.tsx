@@ -41,16 +41,24 @@ const GH_ASSET = (name: string) => `gh-pages-assets/${name}`;
 const ASSETS = IS_GITHUB_PAGES
   ? {
       product: GH_ASSET("montecosme-product.webp"),
+      productSmall: GH_ASSET("montecosme-product-sm.webp"),
       heroBg: GH_ASSET("montecosme-hero-bg.webp"),
+      heroBgSmall: GH_ASSET("montecosme-hero-bg-sm.webp"),
       ingredients: GH_ASSET("montecosme-ingredients.webp"),
+      ingredientsSmall: GH_ASSET("montecosme-ingredients-sm.webp"),
       privacy: GH_ASSET("montecosme-privacy.webp"),
+      privacySmall: GH_ASSET("montecosme-privacy-sm.webp"),
       logo: GH_ASSET("keluargaharmonis-logo.webp"),
     }
   : {
       product: "/manus-storage/montecosme-product_7957a22d.png",
+      productSmall: "/manus-storage/montecosme-product_7957a22d.png",
       heroBg: "/manus-storage/montecosme-hero-bg_7640bb1c.png",
+      heroBgSmall: "/manus-storage/montecosme-hero-bg_7640bb1c.png",
       ingredients: "/manus-storage/montecosme-ingredients_3563a2f7.png",
+      ingredientsSmall: "/manus-storage/montecosme-ingredients_3563a2f7.png",
       privacy: "/manus-storage/montecosme-privacy_016fd02e.png",
+      privacySmall: "/manus-storage/montecosme-privacy_016fd02e.png",
       logo: "/manus-storage/keluargaharmonis-logo_693597bf.webp",
     };
 
@@ -92,7 +100,7 @@ function useReveal() {
 /* ---------- Parallax on scroll ---------- */
 function useParallax() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches) return;
     const els = document.querySelectorAll<HTMLElement>(".parallax");
     let raf = 0;
     const tick = () => {
@@ -156,7 +164,10 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const next = window.scrollY > 24;
+      setScrolled((current) => (current === next ? current : next));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -191,7 +202,7 @@ function Header() {
     >
       <div className="container flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2.5" onClick={closeMenu}>
-          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-11 w-11 shrink-0 object-contain md:h-12 md:w-12" />
+          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" width="48" height="48" decoding="async" className="h-11 w-11 shrink-0 object-contain md:h-12 md:w-12" />
           <span className="font-display text-lg font-semibold italic text-primary">
             Keluarga Harmonis
           </span>
@@ -267,7 +278,7 @@ function Hero() {
       id="top"
       className="relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16"
       style={{
-        backgroundImage: `url(${ASSETS.heroBg})`,
+        backgroundImage: `image-set(url(${ASSETS.heroBgSmall}) 1x, url(${ASSETS.heroBg}) 2x)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -315,6 +326,11 @@ function Hero() {
           <img
             src={ASSETS.product}
             alt="Montecosme Men's Care Spray 3 mL"
+            width="900"
+            height="1200"
+            fetchPriority="high"
+            decoding="async"
+            sizes="(max-width: 767px) calc(100vw - 2rem), 540px"
             className="w-full rounded-3xl shadow-[0_30px_80px_-30px_rgba(46,74,59,0.45)] transition-transform duration-500 hover:scale-[1.03] hover:-translate-y-1"
           />
         </div>
@@ -386,8 +402,13 @@ function ProblemSolution() {
           </div>
           <div className="reveal-right img-slow-zoom mx-auto w-full max-w-sm overflow-hidden rounded-2xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]">
             <img
-              src={ASSETS.product}
+              src={ASSETS.productSmall}
               alt="Montecosme spray 3 mL"
+              width="540"
+              height="720"
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) calc(100vw - 2rem), 384px"
               className="w-full"
             />
           </div>
@@ -446,8 +467,13 @@ function Ingredients() {
           </div>
           <div className="reveal-right img-slow-zoom relative overflow-hidden rounded-3xl shadow-[0_24px_60px_-24px_rgba(46,74,59,0.3)]">
             <img
-              src={ASSETS.ingredients}
+              src={ASSETS.ingredientsSmall}
               alt="Bahan alami Montecosme"
+              width="900"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) calc(100vw - 2rem), 700px"
               className="w-full"
             />
           </div>
@@ -636,8 +662,13 @@ function Privacy() {
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
           <div className="reveal order-2 md:order-1">
             <img
-              src={ASSETS.privacy}
+              src={ASSETS.privacySmall}
               alt="Pengiriman paket dengan label anonim"
+              width="900"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              sizes="(max-width: 767px) calc(100vw - 2rem), 700px"
               className="w-full rounded-3xl shadow-[0_24px_60px_-24px_rgba(46,74,59,0.3)]"
             />
           </div>
@@ -914,7 +945,7 @@ function Footer() {
     <footer className="border-t border-border bg-card py-10">
       <div className="container flex flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex items-center gap-2.5">
-          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" className="h-14 w-14 shrink-0 object-contain" />
+          <img src={ASSETS.logo} alt="Logo Keluarga Harmonis" width="56" height="56" loading="lazy" decoding="async" className="h-14 w-14 shrink-0 object-contain" />
           <div>
             <div className="font-display font-semibold italic text-primary">Keluarga Harmonis</div>
             <div className="text-xs text-muted-foreground">Keluargaharmonis.id — Tips keluarga & perawatan pria alami</div>
